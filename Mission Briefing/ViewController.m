@@ -63,11 +63,10 @@
         //
         
         NSString *name= self.agentNameTextField.text;
-        NSString *agentGreeting= @"Good Evening, Agent ";
+        NSArray *agentNameArray= [name componentsSeparatedByString:@" "];
          // Additional step(s) to remove only the last name
-        NSString *lastName = [name componentsSeparatedByString:@" "][1];
-        agentGreeting = [agentGreeting stringByAppendingString:lastName];
-        self.greetingLabel.text = agentGreeting;
+        
+        self.greetingLabel.text = [NSString stringWithFormat:@"Good evening, Agent %@",[agentNameArray lastObject]];
        
         
         
@@ -80,7 +79,8 @@
         //    Set the textview text property to the paragraph in "MissionBriefing.txt"
         //
         
-        NSString *missionStatement= [[@"This mission will be an arduous one, fraught with peril. You will cover much strange and unfamiliar territory. Should you choose to accept this mission, Agent "stringByAppendingString:lastName]stringByAppendingString:@"], you will certainly be disavowed, but you will be doing your country a great service. This message will self destruct in 5 seconds."];
+        
+
         
         
         
@@ -94,8 +94,13 @@
         //    Once you have the color object, you should be able to set the view's background color to this object.
         //
         
-        UIColor *authenticatedBackgroundColor = nil;
+        UIColor *authenticatedBackgroundColor = [UIColor colorWithRed:0.585
+                                                                 green:0.78
+                                                                  blue:0.188
+                                                                 alpha:1];
+        self.view.backgroundColor=authenticatedBackgroundColor;
         // Additional step to set the above color object to self.view's background color
+        
     }
     else
     {
@@ -108,8 +113,13 @@
         //
         //    Once you have the color object, you should be able to set the view's background color to this object.
         //
-        UIColor *accessDeniedBackgroundColor = nil;
+        UIColor *accessDeniedBackgroundColor = [UIColor colorWithRed:0.78
+                                                                green:0.188
+                                                                 blue:0.188
+                                                                alpha:1];
         // Additional step to set the above color object to self.view's background color
+        self.view.backgroundColor=accessDeniedBackgroundColor;
+        
     }
 }
 
