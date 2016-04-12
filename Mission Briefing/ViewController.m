@@ -52,7 +52,7 @@
     //
     // 2. Check whether there is text in BOTH the name and password textfields
     //
-    if (_agentNameTextField != nil && _agentPasswordTextField !=nil)
+    if ([self.agentNameTextField hasText] && [self.agentPasswordTextField hasText])
     {
         //
         // 3. The greetingLabel needs to be populated with the the string "Good evening, Agent #", where # is the last name of
@@ -68,9 +68,11 @@
         
         self.greetingLabel.text = [NSString stringWithFormat:@"Good evening, Agent %@",[agentNameArray lastObject]];
        
+        // ** Write the example below illustrate how you can create a string with stringWithFormat using a variety of format specifiers and arguments.
+        // NSString *string1 = [NSString stringWithFormat:@"A string: %@, a float: %1.2f", @"string", 31415.9265]; **
         
         
-        //
+        
         // 4. The mission briefing textview needs to be populated with the briefing from HQ, but it must also include the last
         //    name of the agent that logged in. You will notice in the text a "%@" string after the word "Agent". This
         //    instructs the system to replace the "%@" with an actual value at runtime. Perhaps you could use the text in the
@@ -79,10 +81,8 @@
         //    Set the textview text property to the paragraph in "MissionBriefing.txt"
         //
         
-        
-
-        
-        
+        self.missionBriefingTextView.text = [NSString stringWithFormat:@"This mission will be an arduous one, fraught with peril. You will cover much strange and unfamiliar territory. Should you choose to accept this mission, Agent %@, you will certainly be disavowed, but you will be doing your country a great service. This message will self destruct in 5 seconds.",[agentNameArray lastObject]];
+    
         
         //
         // 5. The view's background color needs to switch to green to indicate a successful login by the agent.
